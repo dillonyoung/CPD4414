@@ -1,0 +1,56 @@
+/* 
+    Document   : main
+    Created on : 10-Mar-2013, 2:37:14 PM
+    Author     : Dillon
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+span.error {
+    color: red;
+    display: none;
+}
+
+.ui-popup .ui-content {
+    width: 500px;
+}
+body {
+ background-color: black !important;
+}
+
+#status_message 
+{
+    position: fixed;
+    z-index: 9999;
+    display: none;
+    margin-left: -255px;
+    width: 500px;
+    top: 50px;
+    left: 50%;
+    height: 20px;
+    padding: 5px;
+    text-align: center;
+    color: White;
+    opacity: 0.9;
+    -webkit-box-shadow: 5px 10px 20px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow: 5px 10px 20px rgba(50, 50, 50, 0.5);
+    box-shadow: 5px 10px 20px rgba(50, 50, 50, 0.5);
+}
+
+.status_message_valid
+{
+    background-color: #99CC99;
+    border: 3px solid #33AA33;
+}
+
+.status_message_invalid
+{
+    background-color: #CC9999;
+    border: 3px solid #AA3333;
+}
+
+.status_message_warn 
+{
+    background-color: #CCCC33;
+    border: 3px solid #AAAA00;
+}
