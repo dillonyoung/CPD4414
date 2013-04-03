@@ -9,3 +9,8 @@ function displayMessage(message, state) {
     }
     $('#status_message').fadeIn(500).delay(3000).fadeOut(500);
 }
+
+
+function redirectUser(url) {
+    window.location.href = url;
+}

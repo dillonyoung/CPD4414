@@ -94,7 +94,7 @@ public class Database {
             pstmt.setFloat(4, obj.getWeight());
             pstmt.setFloat(5, obj.getHeight());
             pstmt.setString(6, obj.getEmail());
-            pstmt.setString(7, obj.getPassword());
+            pstmt.setString(7, PasswordEncrypt.generateHash(obj.getPassword()));
 
             // Execute the statement
             rvalue = pstmt.executeUpdate();
@@ -104,5 +104,49 @@ public class Database {
         
         // Return the result
         return rvalue;
+    }
+    
+    public ResultObject loginUser(LoginObject obj) {
+
+        // Declare variable
+        ResultObject result = new ResultObject();
+        int rvalue = -1;
+        int user_id = -1;
+        String user_first_name = "";
+        String user_password = "";
+        
+        // Declare query statement
+        String query = "SELECT id, first_name, password FROM tracare_accounts WHERE email = ?";
+        try {
+            
+            // Create the prepared statement and fill in the values
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, obj.getEmail());
+
+            // Execute the statement
+            ResultSet rs = pstmt.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            while (rs.next()) {
+                user_id = rs.getInt(1);
+                user_first_name = rs.getString(2);
+                user_password = rs.getString(3);
+            }
+            
+            // Check to see if the password matches the one on record
+            if (PasswordEncrypt.generateHash(obj.getPassword()).equals(user_password)) {
+                rvalue = 0;
+                result.setUserId(user_id);
+                result.setFirstName(user_first_name);
+            } else {
+                rvalue = -1;
+            }
+        } catch (SQLException e) {
+            rvalue = -2;
+        }
+        
+        result.setStatus(rvalue);
+        
+        // Return the result
+        return result;
     }
 }

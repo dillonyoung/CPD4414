@@ -6,6 +6,23 @@
         Purpose of the stylesheet follows.
 */
 
+.dialog-settings {
+    max-height: 400px !important;
+    overflow: auto !important;
+}
+
+.dialog-position {
+    top: -100px !important;
+}
+
+.footer-center {
+    text-align: center;
+}
+
+.footer-button {
+    width: 160px !important;
+}
+
 span.error {
     color: red;
     display: none;

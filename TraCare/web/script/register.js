@@ -50,7 +50,7 @@ $(document).ready(function () {
         // Check to see if the email address is set and not valid
         var regex_email = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}/;
         if ($('#email').val().length == 0) {
-            $('#error_email').text("* Email is required");
+            $('#error_email').text("* Email address is required");
             $('#error_email').css('display', 'inline-block');
         } else if (!regex_email.test($('#email').val())) {
             $('#error_email').text("* Email address is not valid");
@@ -129,4 +129,6 @@ $(document).ready(function () {
             displayMessage("There is an issue with one or more fields", 2);
         }
     });
+    
+        console.log($("#btn_register"));
 });
