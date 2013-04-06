@@ -1,3 +1,21 @@
+$(document).ready(function () {
+    
+    // Get the login status of the current user
+    $.getJSON('login_status.jsp', function (result) {
+
+        // Check to see if the user is logged in or not
+        if (result.status == 0) {
+
+        } else if (result.status == 1) {
+
+            // Display the user name
+            $('#login-data').html("Hello, " + result.firstname);
+        }
+
+    });
+
+});
+
 function displayMessage(message, state) {
     $('#status_message').html(message);
     if (state == 1) {

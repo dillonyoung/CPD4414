@@ -28,6 +28,10 @@ span.error {
     display: none;
 }
 
+.ui-slider-input {
+    display: none !important;
+}
+
 .ui-popup .ui-content {
     width: 500px;
 }
@@ -70,4 +74,10 @@ body {
 {
     background-color: #CCCC33;
     border: 3px solid #AAAA00;
+}
+
+#weight-display {
+    float: left;
+    display: inline-block;
+    padding-top: 15px;
 }
