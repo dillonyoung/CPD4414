@@ -1,8 +1,14 @@
 package TraCarePackage;
 
-import java.sql.*;
-import java.text.SimpleDateFormat;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -454,5 +460,56 @@ public class Database {
         System.err.println(rvalue);
         // Return the result
         return rvalue; 
+    }
+    
+    public ReportObject runReport(Date start, Date end, int userid) {
+                         
+        // Declare variable
+        int count = 0;
+        int rvalue = -1;
+        float total = 0;
+        
+        java.sql.Date startDate = new java.sql.Date(start.getTime());
+        java.sql.Date endDate = new java.sql.Date(end.getTime());
+
+        ReportObject report = new ReportObject();
+        
+        // Declare query statement
+        String query = "SELECT * FROM tracare_entries WHERE userid = ? AND datetime BETWEEN ? AND ?";
+                
+        try {
+
+            // Create the prepared statement and fill in the values
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, userid);
+            pstmt.setDate(2, startDate);
+            pstmt.setDate(3, endDate);
+            
+            // Execute the statement
+            ResultSet rs = pstmt.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            while (rs.next()) {
+
+                if (rs.getFloat(4) < report.getLowestWeight()) {
+                    report.setLowestWeight(rs.getFloat(4));
+                    report.setLowestDate(rs.getDate(3));
+                }
+                if (rs.getFloat(4) > report.getHighestWeight()) {
+                    report.setHighestWeight(rs.getFloat(4));
+                    report.setHighestDate(rs.getDate(3));
+                }
+                
+                count++;
+                total += rs.getFloat(4);
+            }
+
+            report.setAverageWeight(total / count);
+   
+        } catch (SQLException ex) {
+            rvalue = -3;
+        }
+
+        // Return the result
+        return report; 
     }
 }
