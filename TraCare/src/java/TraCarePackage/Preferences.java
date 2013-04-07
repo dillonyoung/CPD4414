@@ -6,15 +6,22 @@ package TraCarePackage;
  */
 public class Preferences {
 
-    
+    // Declare variables
     private Database data;
     private PreferencesObject object;
     
+    /**
+     * The constructor for the class
+     */
     public Preferences() {
         this.object = null;
         this.data = new Database();
     }
     
+    /**
+     * A constructor for the class
+     * @param obj The preferences object
+     */
     public Preferences(PreferencesObject obj) {
         
         this();

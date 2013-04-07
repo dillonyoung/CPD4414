@@ -36,8 +36,6 @@ CREATE TABLE tracare_entries (
     userid INT NOT NULL,
 	FOREIGN KEY (userid) REFERENCES tracare_accounts(id),
     datetime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    location INT,
-    FOREIGN KEY (location) REFERENCES tracare_locations(id),
     weight FLOAT,
     hours_slept FLOAT,
     blood_pressure FLOAT,
@@ -46,4 +44,6 @@ CREATE TABLE tracare_entries (
     fitness VARCHAR(MAX),
     nutrition VARCHAR(MAX),
     symptom INT,
-    symptom_description VARCHAR(MAX));
+    symptom_description VARCHAR(MAX),
+	location_latitude FLOAT,
+	location_longitude FLOAT);

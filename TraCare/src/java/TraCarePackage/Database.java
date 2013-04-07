@@ -288,4 +288,42 @@ public class Database {
         // Return the result
         return rvalue;
     }
+   
+    public int addEntry(EntryObject entry) {
+        
+        // Declare variable
+        int count = 0;
+        int rvalue = -1;
+
+        // Declare query statement
+        String query = "INSERT INTO tracare_entries (userid, weight, hours_slept, blood_pressure, energy_level, quality_of_sleep, fitness, nutrition, symptom, symptom_description, location_latitude, location_longitude) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                
+        try {
+
+            // Create the prepared statement and fill in the values
+            PreparedStatement pstmtInsert = conn.prepareStatement(query);
+            pstmtInsert.setInt(1, entry.getUserid());
+            pstmtInsert.setFloat(2, entry.getWeight());
+            pstmtInsert.setFloat(3, entry.getSleep());
+            pstmtInsert.setFloat(4, entry.getBloodpressure());
+            pstmtInsert.setInt(5, entry.getEnergylevel());
+            pstmtInsert.setInt(6, entry.getQualityofsleep());
+            pstmtInsert.setString(7, entry.getFitness());
+            pstmtInsert.setString(8, entry.getNutrition());
+            pstmtInsert.setInt(9, entry.getSymptom());
+            pstmtInsert.setString(10, entry.getSymptomdescription());
+            pstmtInsert.setFloat(11, entry.getLatitude());
+            pstmtInsert.setFloat(12, entry.getLongitude());
+
+            // Execute the statement
+            rvalue = pstmtInsert.executeUpdate();
+        } catch (SQLException ex) {
+            rvalue = -3;
+            System.out.println(ex.getMessage());
+        }
+ 
+
+        // Return the result
+        return rvalue;
+    }
 }
