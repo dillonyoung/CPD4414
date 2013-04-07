@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    
+    // Register the click listner for the register button
     $("#btn_register").on('click', function () {
         
         // Reset the error messages so they are not visible

@@ -32,9 +32,6 @@ span.error {
     display: none !important;
 }
 
-.ui-popup .ui-content {
-    width: 500px;
-}
 body {
  background-color: black !important;
 }
@@ -44,8 +41,8 @@ body {
     position: fixed;
     z-index: 9999;
     display: none;
-    margin-left: -255px;
-    width: 500px;
+    margin-left: -355px;
+    width: 700px;
     top: 50px;
     left: 50%;
     height: 20px;
@@ -53,6 +50,7 @@ body {
     text-align: center;
     color: White;
     opacity: 0.9;
+    font-size: 14pt;
     -webkit-box-shadow: 5px 10px 20px rgba(50, 50, 50, 0.5);
     -moz-box-shadow: 5px 10px 20px rgba(50, 50, 50, 0.5);
     box-shadow: 5px 10px 20px rgba(50, 50, 50, 0.5);
@@ -76,8 +74,17 @@ body {
     border: 3px solid #AAAA00;
 }
 
+#login-data {
+    padding-left: 10px;
+    padding-top: 8px;
+}
+
 #weight-display {
     float: left;
     display: inline-block;
     padding-top: 15px;
+}
+
+td {
+    vertical-align: top;
 }

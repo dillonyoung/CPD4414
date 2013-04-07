@@ -14,7 +14,7 @@ $(document).ready(function () {
         prefData.userID = -1;
         prefData.trackWeight = $('#slideWeight').val();
         prefData.trackSleep = $('#slideSleep').val();
-        prefData.trackBloodPressure = $('#slideBloodPressure').val();
+        prefData.trackBloodPressure = true;
         prefData.trackEnergyLevel = $('#slideEnergyLevel').val();
         prefData.trackQualityofSleep = $('#slideQualityofSleep').val();
         prefData.trackFitness = $('#slideFitness').val();

@@ -22,24 +22,11 @@
     <body>
         <div id="status_message"></div>
         <div data-role="page" id="main">
-            <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
-                <div id="login-data" class="ui-btn-left"></div>
-                <h1>TraCare</h1>
-                <a href="#" data-icon="grid" id="btn_logout" class="ui-btn-right">Logout</a>
-            </div>
+            <%@include file="header.jsp" %>
             <div data-role="content">
 
             </div>
-            <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-                <div data-role="controlgroup" class="footer-center" data-type="horizontal">
-                <a href="newentry.jsp" data-rel="dialog" data-role="button" data-iconpos="top" data-icon="info" class="footer-button">Add Entry</a> 
-                <a href="newentry.jsp" data-rel="dialog" data-role="button" data-iconpos="top" data-icon="info" class="footer-button">Entry List</a> 
-                <a href="newentry.jsp" data-rel="dialog" data-role="button" data-iconpos="top" data-icon="info" class="footer-button">Map</a> 
-                <a href="newentry.jsp" data-rel="dialog" data-role="button" data-iconpos="top" data-icon="info" class="footer-button">Summary</a> 
-
-                <a href="preferences.jsp" data-role="button" data-iconpos="top" data-icon="info" class="footer-button">Preferences</a> 
-                </div>
-            </div>
+            <%@include file="footer.jsp" %>
         </div>
 
     </body>

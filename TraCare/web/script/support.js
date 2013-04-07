@@ -10,6 +10,9 @@ $(document).ready(function () {
 
             // Display the user name
             $('#login-data').html("Hello, " + result.firstname);
+        } else {
+            
+            //redirectUser('index.jsp');
         }
 
     });

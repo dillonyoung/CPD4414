@@ -16,14 +16,15 @@ CREATE TABLE tracare_preferences (
     userid INT NOT NULL, 
     PRIMARY KEY (userid), 
     FOREIGN KEY (userid) REFERENCES tracare_accounts(id), 
-    track_frequency INT NOT NULL, 
     track_weight BIT NOT NULL, 
     track_sleep BIT NOT NULL, 
     track_blood_pressure BIT NOT NULL, 
     track_energy_level BIT NOT NULL, 
     track_quality_of_sleep BIT NOT NULL, 
     track_fitness BIT NOT NULL, 
-    track_nutrition BIT NOT NULL);
+    track_nutrition BIT NOT NULL,
+	track_symptom BIT NOT NULL,
+	track_location BIT NOT NULL);
 CREATE TABLE tracare_locations (
     id INT NOT NULL IDENTITY,
     PRIMARY KEY (id),
@@ -32,7 +33,8 @@ CREATE TABLE tracare_locations (
 CREATE TABLE tracare_entries (
     id INT NOT NULL IDENTITY,
     PRIMARY KEY (id),
-    note VARCHAR(MAX) NOT NULL,
+    userid INT NOT NULL,
+	FOREIGN KEY (userid) REFERENCES tracare_accounts(id),
     datetime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     location INT,
     FOREIGN KEY (location) REFERENCES tracare_locations(id),
@@ -44,6 +46,4 @@ CREATE TABLE tracare_entries (
     fitness VARCHAR(MAX),
     nutrition VARCHAR(MAX),
     symptom INT,
-    FOREIGN KEY (symptom) REFERENCES tracare_symptomtypes(id),
-    symptom_intensity INT,
     symptom_description VARCHAR(MAX));
