@@ -1,5 +1,7 @@
 package TraCarePackage;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Dillon
@@ -35,6 +37,16 @@ public class Entry {
         }
         
         return rvalue;
+    }
+    
+    public ArrayList<EntryObject> loadEntries(int userid) {
+        
+        // Declare variables
+        ArrayList<EntryObject> results;
+        
+        results = this.data.loadEntries(userid);
+        
+        return results;
     }
  
 }

@@ -7,7 +7,7 @@
 <div data-role="footer" data-position="fixed" data-tap-toggle="false">
     <div data-role="controlgroup" class="footer-center" data-type="horizontal">
     <a href="newentry.jsp" rel="external" data-role="button" data-iconpos="top" data-icon="info" class="footer-button">Add Entry</a> 
-    <a href="newentry.jsp" rel="external" data-role="button" data-iconpos="top" data-icon="info" class="footer-button">Entry List</a> 
+    <a href="entrylist.jsp" rel="external" data-role="button" data-iconpos="top" data-icon="info" class="footer-button">Entry List</a> 
     <a href="newentry.jsp" rel="external" data-role="button" data-iconpos="top" data-icon="info" class="footer-button">Map</a> 
     <a href="newentry.jsp" rel="external" data-role="button" data-iconpos="top" data-icon="info" class="footer-button">Summary</a> 
 

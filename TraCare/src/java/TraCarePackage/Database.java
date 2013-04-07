@@ -1,6 +1,8 @@
 package TraCarePackage;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  *
@@ -325,5 +327,55 @@ public class Database {
 
         // Return the result
         return rvalue;
+    }
+    
+    public ArrayList<EntryObject> loadEntries(int userid) {
+               
+        // Declare variable
+        int count = 0;
+        int rvalue = -1;
+
+        ArrayList<EntryObject> entries = new ArrayList<EntryObject>();
+        
+        // Declare query statement
+        String query = "SELECT * FROM tracare_entries WHERE userid = ? ORDER BY datetime DESC";
+                
+        try {
+
+            // Create the prepared statement and fill in the values
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, userid);
+
+            // Execute the statement
+            ResultSet rs = pstmt.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            while (rs.next()) {
+                EntryObject entry = new EntryObject();
+                entry.setId(rs.getInt(1));
+                entry.setUserid(rs.getInt(2));
+                entry.setDatetime(rs.getTimestamp(3));
+                entry.setWeight(rs.getFloat(4));
+                entry.setSleep(rs.getFloat(5));
+                entry.setBloodpressure(rs.getFloat(6));
+                entry.setEnergylevel(rs.getInt(7));
+                entry.setQualityofsleep(rs.getInt(8));
+                entry.setFitness(rs.getString(9));
+                entry.setNutrition(rs.getString(10));
+                entry.setSymptom(rs.getInt(11));
+                entry.setSymptomdescription(rs.getString(12));
+                entry.setLatitude(rs.getFloat(13));
+                entry.setLongitude(rs.getFloat(14));
+                //entry = new SimpleDateFormat("MMMMM d, yyyy HH:mm:ss aa").format(rs.getTimestamp(1));
+                entries.add(entry);
+            }
+   
+        } catch (SQLException ex) {
+            rvalue = -3;
+            System.out.println(ex.getMessage());
+        }
+ 
+
+        // Return the result
+        return entries; 
     }
 }
