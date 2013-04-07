@@ -107,7 +107,7 @@
                 <input type="hidden" name="latitude" id="latitude" />
                 <input type="hidden" name="longitude" id="longitude" />
                 <a href="" data-role="button" data-theme="b" id="btn_addentry">Add Entry</a>       
-                <a href="" data-role="button" data-theme="c" id="btn_cancel">Cancel</a> 
+                <a href="entrylist.jsp" rel="external" data-role="button" data-theme="c" id="btn_cancel">Cancel</a> 
 
 
             </div>

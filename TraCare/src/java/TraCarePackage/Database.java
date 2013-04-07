@@ -428,4 +428,31 @@ public class Database {
         // Return the result
         return entry; 
     }
+    
+    public int deleteEntry(int id) {
+                     
+        // Declare variable
+        int count = 0;
+        int rvalue = -1;
+        
+        // Declare query statement
+        String query = "DELETE FROM tracare_entries WHERE id = ?";
+                
+        try {
+
+            // Create the prepared statement and fill in the values
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, id);
+
+            // Execute the statement
+            ResultSet rs = pstmt.executeQuery();
+            rvalue = 1;
+        } catch (SQLException ex) {
+            rvalue = -3;
+        }
+
+        System.err.println(rvalue);
+        // Return the result
+        return rvalue; 
+    }
 }

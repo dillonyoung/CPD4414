@@ -9,7 +9,7 @@ $(document).ready(function () {
         } else if (result.status == 1) {
 
             // Display the user name
-            $('#login-data').html("Hello, " + result.firstname);
+            $('#login-data').html("Welcome, " + result.firstname);
         } else {
             
             //redirectUser('index.jsp');
@@ -17,6 +17,38 @@ $(document).ready(function () {
 
     });
 
+
+    // Register the click listner for the logout button
+    $("#btn_logout").on('click', function () {
+        
+        // Create an object for the registration
+        var entryData = new Object();
+        entryData.status = 0;
+        entryData.userid = 0;
+        entryData.firstname = "";
+
+        // Convert the object to JSON
+        var query = JSON.stringify(entryData);
+
+        $.ajax({
+            type: "POST",
+            url: "logout_process.jsp",
+            dataType: "json",
+            data: { json: query },
+            success: function (data) {
+                var response = data;
+
+                // Check to see if an internal error occurred
+                if (response.status == -1) {
+                    displayMessage("An error occurred while logging you out", 2);
+
+                } else {
+                    displayMessage("You have been successfully logged out, please wait while you are redirected", 1);
+                    window.setTimeout(function () { window.location.href = 'index.jsp'; }, 5000);
+                }
+            }
+        });
+    });
 });
 
 function displayMessage(message, state) {

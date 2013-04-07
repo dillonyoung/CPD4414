@@ -118,6 +118,7 @@ $(document).ready(function () {
                         
                     } else {
                         displayMessage("The entry has been successfully saved, please wait while you are redirected", 1);
+                        window.setTimeout(function () { window.location.href = 'entrylist.jsp'; }, 5000);
                     }
                 }
             });

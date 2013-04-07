@@ -197,6 +197,9 @@
                 <input type="hidden" name="latitude" id="latitude" value="<% out.write(String.format("%f", obj.getLatitude())); %>" />
                 <input type="hidden" name="longitude" id="longitude" value="<% out.write(String.format("%f", obj.getLongitude())); %>" />
                 <% } %>
+                <a href="" data-role="button" data-theme="b" id="btn_deleteentry">Delete Entry</a>       
+                <a href="entrylist.jsp" rel="external" data-role="button" data-theme="c" id="btn_cancel">Return to Entry List</a> 
+                <input type="hidden" name="pageid" id="pageid" value="<% out.write(request.getParameter("id")); %>" />
             </div>
             <%@include file="footer.jsp" %>
         </div>

@@ -59,4 +59,13 @@ public class Entry {
         return results;
     }
  
+    public int deleteEntry(int id) {
+        
+        // Declare variables
+        int rvalue;
+        
+        rvalue = this.data.deleteEntry(id);
+        
+        return rvalue;
+    }
 }

@@ -54,7 +54,7 @@ $(document).ready(function () {
                         
                     } else {
                         displayMessage("You have been successfully logged in, please wait while you are redirected", 1);
-                        window.setTimeout(function () { window.location.href = 'main.jsp'; }, 5000);
+                        window.setTimeout(function () { window.location.href = 'entrylist.jsp'; }, 5000);
                     }
                 }
             });
