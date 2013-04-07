@@ -48,5 +48,15 @@ public class Entry {
         
         return results;
     }
+    
+    public EntryObject loadEntry(int userid, int id) {
+        
+        // Declare variables
+        EntryObject results;
+        
+        results = this.data.loadEntry(userid, id);
+        
+        return results;
+    }
  
 }

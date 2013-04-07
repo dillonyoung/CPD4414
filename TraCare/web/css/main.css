@@ -88,3 +88,7 @@ body {
 td {
     vertical-align: top;
 }
+
+.heading {
+    font-weight: bold;
+}

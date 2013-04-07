@@ -378,4 +378,54 @@ public class Database {
         // Return the result
         return entries; 
     }
+    
+    public EntryObject loadEntry(int userid, int id) {
+                       
+        // Declare variable
+        int count = 0;
+        int rvalue = -1;
+
+        EntryObject entry = new EntryObject();
+        
+        // Declare query statement
+        String query = "SELECT * FROM tracare_entries WHERE userid = ? AND id = ? ORDER BY datetime DESC";
+                
+        try {
+
+            // Create the prepared statement and fill in the values
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, userid);
+            pstmt.setInt(2, id);
+
+            // Execute the statement
+            ResultSet rs = pstmt.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            while (rs.next()) {
+                entry.setId(rs.getInt(1));
+                entry.setUserid(rs.getInt(2));
+                entry.setDatetime(rs.getTimestamp(3));
+                entry.setWeight(rs.getFloat(4));
+                entry.setSleep(rs.getFloat(5));
+                entry.setBloodpressure(rs.getFloat(6));
+                entry.setEnergylevel(rs.getInt(7));
+                entry.setQualityofsleep(rs.getInt(8));
+                entry.setFitness(rs.getString(9));
+                entry.setNutrition(rs.getString(10));
+                entry.setSymptom(rs.getInt(11));
+                entry.setSymptomdescription(rs.getString(12));
+                entry.setLatitude(rs.getFloat(13));
+                entry.setLongitude(rs.getFloat(14));
+            }
+            
+            if ("".equals(entry.getFitness())) { entry.setFitness("N/A"); }
+            if ("".equals(entry.getNutrition())) { entry.setNutrition("N/A"); }
+            if ("".equals(entry.getSymptomdescription())) { entry.setSymptomdescription("N/A"); }
+   
+        } catch (SQLException ex) {
+            rvalue = -3;
+        }
+
+        // Return the result
+        return entry; 
+    }
 }

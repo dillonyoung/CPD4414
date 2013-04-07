@@ -32,13 +32,13 @@
             <%@include file="header.jsp" %>
             <div data-role="content">
                 <% if (obj.isTrackWeight()) { %>
-                <p>Weight: (Weight in Pounds) <span class="error" id="error_weight"></span><input type="number" min="0" max="300" name="weight" id="weight" /></p>
+                <p class="heading">Weight: (Weight in Pounds) <span class="error" id="error_weight"></span><input type="number" min="0" max="300" name="weight" id="weight" /></p>
                 <% } %>
                 <% if (obj.isTrackSleep()) { %>
-                <p>Sleep: (Number of Hours Slept) <span class="error" id="error_sleep"></span><input type="number" min="0" max="24" name="sleep" id="sleep" /></p>
+                <p class="heading">Sleep: (Number of Hours Slept) <span class="error" id="error_sleep"></span><input type="number" min="0" max="24" name="sleep" id="sleep" /></p>
                 <% } %>
                 <% if (obj.isTrackEnergyLevel()) { %>
-                <p>Energy Level: <span class="error" id="error_energy_level"></span>
+                <p class="heading">Energy Level: <span class="error" id="error_energy_level"></span>
                     <select name="energy_level" id="energy_level">
                         <option value="0">Not Specified</option>
                         <option value="1">Terrible</option>
@@ -50,7 +50,7 @@
                 </p>
                 <% } %>
                 <% if (obj.isTrackQualityofSleep()) { %>
-                <p>Quality of Sleep: <span class="error" id="error_quality_of_sleep"></span>
+                <p class="heading">Quality of Sleep: <span class="error" id="error_quality_of_sleep"></span>
                     <select name="quality_of_sleep" id="quality_of_sleep">
                         <option value="0">Not Specified</option>
                         <option value="1">Terrible</option>
@@ -62,17 +62,17 @@
                 </p>
                 <% } %>
                 <% if (obj.isTrackFitness()) { %>
-                <p>Fitness Activity: <span class="error" id="error_fitness"></span>
+                <p class="heading">Fitness Activity: <span class="error" id="error_fitness"></span>
                     <textarea name="fitness" id="fitness"></textarea>
                 </p>
                 <% } %>
                 <% if (obj.isTrackNutrition()) { %>
-                <p>Nutrition: <span class="error" id="error_nutrition"></span>
+                <p class="heading">Nutrition: <span class="error" id="error_nutrition"></span>
                     <textarea name="nutrition" id="nutrition"></textarea>
                 </p>
                 <% } %>
                 <% if (obj.isTrackSymptom()) { %>
-                <p>Symptom: <span class="error" id="error_symptom"></span>
+                <p class="heading">Symptom: <span class="error" id="error_symptom"></span>
                     <select name="symptom" id="symptom">
                         <option value="0">Not Specified</option>
                         <option value="1">Other</option>
@@ -102,7 +102,7 @@
                 </p>
                 <% } %>
                 <% if (obj.isTrackLocation()) { %>
-                <p>Location: <span class="error" id="error_location"></span><br /><img id="map-canvas" /></p>
+                <p class="heading">Location: <span class="error" id="error_location"></span><br /><img id="map-canvas" /></p>
                 <% } %>
                 <input type="hidden" name="latitude" id="latitude" />
                 <input type="hidden" name="longitude" id="longitude" />

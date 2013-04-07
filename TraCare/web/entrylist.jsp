@@ -38,7 +38,7 @@
                 
                 for (int i = 0; i < entries.size(); i++) {
                     String entrydate = new SimpleDateFormat("MMMMM d, yyyy HH:mm:ss aa").format(entries.get(i).getDatetime());
-                    out.write("<li><a href='viewentry.jsp?id=" + entries.get(i).getId() + "'>" + entrydate + "</a></li>");
+                    out.write("<li><a href='viewentry.jsp?id=" + entries.get(i).getId() + "' rel='external'>" + entrydate + "</a></li>");
                 }
             %>
                 </ul>
