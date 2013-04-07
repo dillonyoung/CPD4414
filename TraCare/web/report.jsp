@@ -4,6 +4,7 @@
     Author     : Dillon
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="TraCarePackage.Report"%>
 <%@page import="TraCarePackage.ReportObject"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -40,7 +41,10 @@
                 String displayStart = new SimpleDateFormat("MMMMM d, yyyy").format(startDate);
                 String displayEnd = new SimpleDateFormat("MMMMM d, yyyy").format(endDate);
                 Report report = new Report();
+                System.err.println(Integer.parseInt(session.getAttribute("userid").toString()));
                 ReportObject obj = report.runReport(startDate, endDate, Integer.parseInt(session.getAttribute("userid").toString()));
+                
+                DecimalFormat decFormat = new DecimalFormat("##0.00");
                 
                 String lowestDate = new SimpleDateFormat("MMMMM d, yyyy").format(obj.getLowestDate());
                 String highestDate = new SimpleDateFormat("MMMMM d, yyyy").format(obj.getHighestDate());
@@ -51,9 +55,14 @@
                 <p><% out.write(displayEnd); %></p>
                 <p class="heading">Lowest Weight Date:</p>
                 <p><% out.write(lowestDate); %></p>
-                
+                <p class="heading">Lowest Weight:</p>
+                <p><% out.write(decFormat.format(obj.getLowestWeight()) + " Lbs"); %></p>
                 <p class="heading">Highest Weight Date:</p>
                 <p><% out.write(highestDate); %></p>
+                <p class="heading">Highest Weight:</p>
+                <p><% out.write(decFormat.format(obj.getHighestWeight()) + " Lbs"); %></p>
+                <p class="heading">Average Weight:</p>
+                <p><% out.write(decFormat.format(obj.getAverageWeight()) + " Lbs"); %></p>
                 <a href="summary.jsp" rel="external" data-role="button" data-theme="c" id="btn_cancel">Back</a> 
 
             </div>

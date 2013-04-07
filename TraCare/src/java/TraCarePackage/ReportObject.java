@@ -17,6 +17,8 @@ public class ReportObject {
     public ReportObject() {
         this.lowestWeight = Float.MAX_VALUE;
         this.highestWeight = Float.MIN_VALUE;
+        this.lowestDate = new Date(Long.MIN_VALUE);
+        this.highestDate = new Date(Long.MAX_VALUE);
     }
     
     public Date getLowestDate() {

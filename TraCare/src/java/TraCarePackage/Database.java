@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -469,8 +470,18 @@ public class Database {
         int rvalue = -1;
         float total = 0;
         
-        java.sql.Date startDate = new java.sql.Date(start.getTime());
-        java.sql.Date endDate = new java.sql.Date(end.getTime());
+        Calendar startCal = Calendar.getInstance();
+        startCal.setTime(start);
+        startCal.add(Calendar.DATE, -1);
+        Date newStart = startCal.getTime();
+        
+        Calendar endCal = Calendar.getInstance();
+        endCal.setTime(end);
+        endCal.add(Calendar.DATE, 1);
+        Date newEnd = endCal.getTime();
+        
+        java.sql.Date startDate = new java.sql.Date(newStart.getTime());
+        java.sql.Date endDate = new java.sql.Date(newEnd.getTime());
 
         ReportObject report = new ReportObject();
         
@@ -504,6 +515,14 @@ public class Database {
             }
 
             report.setAverageWeight(total / count);
+            
+            if (count == 0) {
+                report.setHighestDate(end);
+                report.setLowestDate(start);
+                report.setHighestWeight(0);
+                report.setLowestWeight(0);
+                report.setAverageWeight(0);
+            }
    
         } catch (SQLException ex) {
             rvalue = -3;
