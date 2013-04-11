@@ -1,3 +1,9 @@
+/* 
+    Document...: viewentry.js
+    Author.....: Dillon Young
+    Description: The javascript file for the view entry process
+*/
+
 $(document).ready(function () {
     if ($('#map-canvas').length > 0) {
         var latitude = $('#latitude').val();

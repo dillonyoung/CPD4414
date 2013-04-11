@@ -27,6 +27,7 @@
         <div data-role="page" id="newentry">
             <%@include file="header.jsp" %>
             <div data-role="content">
+                <h2>Summary</h2>
                 <p class="heading">Start Date: <span class="error" id="error_start_date"></span><input type="date" name="start_date" id="start_date" /></p>
 
                 <p class="heading">End Date: <span class="error" id="error_end_date"></span><input type="date" name="end_date" id="end_date" /></p>

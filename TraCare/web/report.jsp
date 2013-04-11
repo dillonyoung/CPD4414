@@ -34,6 +34,7 @@
         <div data-role="page" id="newentry">
             <%@include file="header.jsp" %>
             <div data-role="content">
+                <h2>Summary Report</h2>
                 <%
                 DateFormat df = new SimpleDateFormat ("yyyy-MM-dd");
                 Date startDate = df.parse(request.getParameter("start"));

@@ -31,6 +31,7 @@
         <div data-role="page" id="newentry">
             <%@include file="header.jsp" %>
             <div data-role="content">
+                <h2>New Entry</h2>
                 <% if (obj.isTrackWeight()) { %>
                 <p class="heading">Weight: (Weight in Pounds) <span class="error" id="error_weight"></span><input type="number" min="0" max="300" name="weight" id="weight" /></p>
                 <% } %>

@@ -4,8 +4,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- *
- * @author Dillon
+ * PasswordEncrypt Class
+ * @author Dillon Young (C0005790)
+ * Based off of code from http://www.mkyong.com/java/java-sha-hashing-example/
  */
 public class PasswordEncrypt {
 

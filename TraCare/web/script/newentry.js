@@ -1,3 +1,9 @@
+/* 
+    Document...: newentry.js
+    Author.....: Dillon Young
+    Description: The javascript file for the new entry process
+*/
+
 $(document).ready(function () {
     if ($('#map-canvas').length > 0) {
         if (navigator.geolocation)

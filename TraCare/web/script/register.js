@@ -1,3 +1,9 @@
+/* 
+    Document...: register.js
+    Author.....: Dillon Young
+    Description: The javascript file for the registration process
+*/
+
 $(document).ready(function () {
     
     // Register the click listner for the register button

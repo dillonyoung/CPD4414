@@ -1,3 +1,9 @@
+/* 
+    Document...: support.js
+    Author.....: Dillon Young
+    Description: The support javascript file
+*/
+
 $(document).ready(function () {
     
     // Get the login status of the current user

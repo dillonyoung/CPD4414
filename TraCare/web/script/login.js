@@ -1,3 +1,9 @@
+/* 
+    Document...: login.js
+    Author.....: Dillon Young
+    Description: The javascript file for the login process
+*/
+
 $(document).ready(function () {
     $("#btn_login").on('click', function () {
         

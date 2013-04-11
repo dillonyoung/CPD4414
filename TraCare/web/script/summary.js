@@ -1,3 +1,9 @@
+/* 
+    Document...: summary.js
+    Author.....: Dillon Young
+    Description: The javascript file for the summary process
+*/
+
 $(document).ready(function () {
 
     // Register the click listner for the run summary button

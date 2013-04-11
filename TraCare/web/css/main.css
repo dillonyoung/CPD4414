@@ -1,9 +1,8 @@
 /* 
     Document   : main
     Created on : 10-Mar-2013, 2:37:14 PM
-    Author     : Dillon
-    Description:
-        Purpose of the stylesheet follows.
+    Author     : Dillon Young
+    Description: The main style sheet
 */
 
 .dialog-settings {
@@ -91,4 +90,24 @@ td {
 
 .heading {
     font-weight: bold;
+}
+
+.ui-icon-tracare-logout {
+    background-image: url("../images/logout.png");
+}
+
+.ui-icon-tracare-addentry {
+    background-image: url("../images/addentry.png");
+}
+
+.ui-icon-tracare-entries {
+    background-image: url("../images/entries.png");
+}
+
+.ui-icon-tracare-summary {
+    background-image: url("../images/summary.png");
+}
+
+.ui-icon-tracare-preferences {
+    background-image: url("../images/preferences.png");
 }

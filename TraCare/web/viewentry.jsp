@@ -32,6 +32,7 @@
         <div data-role="page" id="entrylist">
             <%@include file="header.jsp" %>
             <div data-role="content">
+                <h2>View Entry</h2>
             <%
 
                 Entry entry = new Entry();

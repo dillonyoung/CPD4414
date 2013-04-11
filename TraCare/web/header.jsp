@@ -7,5 +7,5 @@
 <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
     <div id="login-data" class="ui-btn-left"></div>
     <h1>TraCare</h1>
-    <a href="#" data-icon="grid" id="btn_logout" class="ui-btn-right">Logout</a>
+    <a href="#" id="btn_logout" class="ui-btn-right" data-icon="tracare-logout">Logout</a>
 </div>

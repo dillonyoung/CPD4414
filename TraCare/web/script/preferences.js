@@ -1,3 +1,9 @@
+/* 
+    Document...: preferences.js
+    Author.....: Dillon Young
+    Description: The javascript file for the preferences
+*/
+
 $(document).ready(function () {
     
     // Register a change listener on the weight slider
