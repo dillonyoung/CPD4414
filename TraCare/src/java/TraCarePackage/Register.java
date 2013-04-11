@@ -37,7 +37,7 @@ public class Register {
     public int attemptRegistration() {
         
         // Declare variables
-        int rvalue = 0;
+        int rvalue;
         
         // Check to ensure that the object has been set
         if (this.object != null) {

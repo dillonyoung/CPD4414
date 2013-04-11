@@ -23,7 +23,10 @@
     </head>
     <body>
         <%
+            // Create a new preferences object instance
             Preferences pref = new Preferences();
+            
+            // Load the user preferences
             PreferencesObject obj = pref.loadPreferences(Integer.parseInt(session.getAttribute("userid").toString()));
         %>
         <div id="status_message"></div>

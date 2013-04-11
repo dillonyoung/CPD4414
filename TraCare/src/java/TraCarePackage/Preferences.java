@@ -52,7 +52,7 @@ public class Preferences {
     public int savePreferences() {
        
         // Declare variables
-        int rvalue = 0;
+        int rvalue;
         
         // Check to see if the object is not null
         if (this.object != null) {

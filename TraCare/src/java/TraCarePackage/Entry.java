@@ -42,7 +42,7 @@ public class Entry {
     public int saveEntry() {
         
         // Declare variables
-        int rvalue = -1;
+        int rvalue;
         
         // Check to see if the object is not null
         if (this.object != null) {

@@ -36,19 +36,27 @@
             <div data-role="content">
                 <h2>Summary Report</h2>
                 <%
-                DateFormat df = new SimpleDateFormat ("yyyy-MM-dd");
-                Date startDate = df.parse(request.getParameter("start"));
-                Date endDate = df.parse(request.getParameter("end"));
-                String displayStart = new SimpleDateFormat("MMMMM d, yyyy").format(startDate);
-                String displayEnd = new SimpleDateFormat("MMMMM d, yyyy").format(endDate);
-                Report report = new Report();
-                System.err.println(Integer.parseInt(session.getAttribute("userid").toString()));
-                ReportObject obj = report.runReport(startDate, endDate, Integer.parseInt(session.getAttribute("userid").toString()));
-                
-                DecimalFormat decFormat = new DecimalFormat("##0.00");
-                
-                String lowestDate = new SimpleDateFormat("MMMMM d, yyyy").format(obj.getLowestDate());
-                String highestDate = new SimpleDateFormat("MMMMM d, yyyy").format(obj.getHighestDate());
+                    // Create the date and number formatters
+                    DateFormat df = new SimpleDateFormat ("yyyy-MM-dd");
+                    DecimalFormat decFormat = new DecimalFormat("##0.00");
+                    
+                    // Get the start and end dates
+                    Date startDate = df.parse(request.getParameter("start"));
+                    Date endDate = df.parse(request.getParameter("end"));
+                    
+                    // Build the formatted start and end dates
+                    String displayStart = new SimpleDateFormat("MMMMM d, yyyy").format(startDate);
+                    String displayEnd = new SimpleDateFormat("MMMMM d, yyyy").format(endDate);
+                    
+                    // Create a new instance of the report class
+                    Report report = new Report();
+                    
+                    // Create a new report object instance
+                    ReportObject obj = report.runReport(startDate, endDate, Integer.parseInt(session.getAttribute("userid").toString()));
+
+                    // Build the formatted lowest and highest weight dates
+                    String lowestDate = new SimpleDateFormat("MMMMM d, yyyy").format(obj.getLowestDate());
+                    String highestDate = new SimpleDateFormat("MMMMM d, yyyy").format(obj.getHighestDate());
                 %>
                 <p class="heading">Start Date:</p>
                 <p><% out.write(displayStart); %></p>

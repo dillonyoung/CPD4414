@@ -33,12 +33,16 @@
             <%@include file="header.jsp" %>
             <div data-role="content">
                 <h2>View Entry</h2>
-            <%
+                <%
+                    // Create a new entry instance
+                    Entry entry = new Entry();
 
-                Entry entry = new Entry();
-                EntryObject obj = entry.loadEntry(Integer.parseInt(session.getAttribute("userid").toString()), Integer.parseInt(request.getParameter("id")));
-                DecimalFormat df = new DecimalFormat("###.00");
-            %>
+                    // Load the entry details
+                    EntryObject obj = entry.loadEntry(Integer.parseInt(session.getAttribute("userid").toString()), Integer.parseInt(request.getParameter("id")));
+
+                    // Create the decimal formatter instance
+                    DecimalFormat df = new DecimalFormat("###.00");
+                %>
 
                 <% if (obj.getWeight() != -1) { %>
                 <p class="heading">Weight: (Weight in Pounds)</p>

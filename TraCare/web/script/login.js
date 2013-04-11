@@ -5,6 +5,8 @@
 */
 
 $(document).ready(function () {
+    
+    // Register a click listener for the login button
     $("#btn_login").on('click', function () {
         
         // Reset the error messages so they are not visible
@@ -42,6 +44,7 @@ $(document).ready(function () {
             // Convert the object to JSON
             var query = JSON.stringify(loginData);
 
+            // Attempt to login into the application
             $.ajax({
                 type: "POST",
                 url: "login_process.jsp",
@@ -60,7 +63,7 @@ $(document).ready(function () {
                         
                     } else {
                         displayMessage("You have been successfully logged in, please wait while you are redirected", 1);
-                        window.setTimeout(function () { window.location.href = 'entrylist.jsp'; }, 5000);
+                        window.setTimeout(function () { window.location.href = 'entrylist.jsp'; }, 3000);
                     }
                 }
             });

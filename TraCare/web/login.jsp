@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : 9-Mar-2013, 5:04:33 PM
-    Author     : Dillon
+    Author     : Dillon Young (C0005790)
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

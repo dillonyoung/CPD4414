@@ -38,7 +38,7 @@ public class Login {
     public ResultObject attemptLogin() {
         
         // Declare variables
-        int rvalue = -1;
+        int rvalue;
         ResultObject result = new ResultObject();
         
         // Check to see if the object is not null

@@ -111,3 +111,9 @@ td {
 .ui-icon-tracare-preferences {
     background-image: url("../images/preferences.png");
 }
+
+.main-link {
+    width: 40%;
+    float: right;
+    clear: right;
+}

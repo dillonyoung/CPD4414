@@ -1,7 +1,7 @@
 <%-- 
     Document   : entrylist
     Created on : 9-Mar-2013, 5:04:33 PM
-    Author     : Dillon
+    Author     : Dillon Young (C0005790)
 --%>
 
 <%@page import="java.text.SimpleDateFormat"%>
@@ -32,15 +32,24 @@
             <%@include file="header.jsp" %>
             <div data-role="content">
                 <ul data-role="listview">
-            <%
-                Entry entry = new Entry();
-                ArrayList<EntryObject> entries = entry.loadEntries(Integer.parseInt(session.getAttribute("userid").toString()));
-                
-                for (int i = 0; i < entries.size(); i++) {
-                    String entrydate = new SimpleDateFormat("MMMMM d, yyyy HH:mm:ss aa").format(entries.get(i).getDatetime());
-                    out.write("<li><a href='viewentry.jsp?id=" + entries.get(i).getId() + "' rel='external'>" + entrydate + "</a></li>");
-                }
-            %>
+                <%
+                    // Create a entry object instance
+                    Entry entry = new Entry();
+
+                    // Load the entries for the current user from the database
+                    ArrayList<EntryObject> entries = entry.loadEntries(Integer.parseInt(session.getAttribute("userid").toString()));
+
+                    // Loop through the entries and add an entry to the display list
+                    for (int i = 0; i < entries.size(); i++) {
+                        String entrydate = new SimpleDateFormat("MMMMM d, yyyy HH:mm:ss aa").format(entries.get(i).getDatetime());
+                        out.write("<li><a href='viewentry.jsp?id=" + entries.get(i).getId() + "' rel='external'>" + entrydate + "</a></li>");
+                    }
+                    
+                    // Check to see if the entries list is blank and display a message to the user
+                    if (entries.size() == 0) {
+                        out.write("<li>No entries are currently available</li>");
+                    }
+                %>
                 </ul>
             </div>
             <%@include file="footer.jsp" %>

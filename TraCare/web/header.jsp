@@ -1,7 +1,7 @@
 <%-- 
     Document   : header
     Created on : 6-Apr-2013, 7:55:12 PM
-    Author     : Dillon
+    Author     : Dillon Young (C0005790)
 --%>
 
 <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">

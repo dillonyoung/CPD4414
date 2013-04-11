@@ -24,7 +24,10 @@
     </head>
     <body>
         <%
+            // Create a new preferences object instance
             Preferences pref = new Preferences();
+            
+            // oad the preferences for the current user
             PreferencesObject obj = pref.loadPreferences(Integer.parseInt(session.getAttribute("userid").toString()));
         %>
         <div id="status_message"></div>
@@ -109,8 +112,6 @@
                 <input type="hidden" name="longitude" id="longitude" />
                 <a href="" data-role="button" data-theme="b" id="btn_addentry">Add Entry</a>       
                 <a href="entrylist.jsp" rel="external" data-role="button" data-theme="c" id="btn_cancel">Cancel</a> 
-
-
             </div>
             <%@include file="footer.jsp" %>
         </div>

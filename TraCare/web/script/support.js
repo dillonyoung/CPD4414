@@ -50,13 +50,19 @@ $(document).ready(function () {
 
                 } else {
                     displayMessage("You have been successfully logged out, please wait while you are redirected", 1);
-                    window.setTimeout(function () { window.location.href = 'index.jsp'; }, 5000);
+                    window.setTimeout(function () { window.location.href = 'index.jsp'; }, 3000);
                 }
             }
         });
     });
 });
 
+
+/**
+ * Displays a message across the top of the web page
+ * @param message The message to be displayed
+ * @param state The message state for the message
+ */
 function displayMessage(message, state) {
     $('#status_message').html(message);
     if (state == 1) {
@@ -70,6 +76,10 @@ function displayMessage(message, state) {
 }
 
 
+/**
+ * Redirects the user to a supplied URL
+ * @param url The URL to redirect the user to
+ */
 function redirectUser(url) {
     window.location.href = url;
 }

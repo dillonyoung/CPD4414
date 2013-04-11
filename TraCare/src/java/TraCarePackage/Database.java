@@ -20,7 +20,8 @@ public class Database {
 
     // Declare database connection variables
     // URL: The URL to the Microsoft SQL Server
-    private String url = "jdbc:sqlserver://youngski.homeserver.com\\SQLSERVEREXPRESS:1433;databaseName=CSE_DEPT_c0005790";
+    //private String url = "jdbc:sqlserver://youngski.homeserver.com\\SQLSERVEREXPRESS:1433;databaseName=CSE_DEPT_c0005790";
+    private String url = "jdbc:sqlserver://ipro.lambton.on.ca\\MSSQLSERVER:1433;databaseName=CSE_DEPT_c0005790";
     
     // Username: The username for the account on the Microsoft SQL Server
     private String username = "c0005790";
@@ -114,7 +115,7 @@ public class Database {
     public int registerNewUser(RegisterObject obj) {
 
         // Declare variable
-        int rvalue = 0;
+        int rvalue;
 
         // Declare query statement
         String query = "INSERT INTO tracare_accounts (first_name, last_name, gender, weight, height, email, password) VALUES(?, ?, ?, ?, ?, ?, ?)";
@@ -151,7 +152,7 @@ public class Database {
 
         // Declare variable
         ResultObject result = new ResultObject();
-        int rvalue = -1;
+        int rvalue;
         int user_id = -1;
         String user_first_name = "";
         String user_password = "";
@@ -259,7 +260,7 @@ public class Database {
 
         // Declare variable
         int count = 0;
-        int rvalue = -1;
+        int rvalue;
         int user_id = -1;
         String user_first_name = "";
         String user_password = "";
@@ -351,7 +352,7 @@ public class Database {
         
         // Declare variable
         int count = 0;
-        int rvalue = -1;
+        int rvalue;
 
         // Declare query statement
         String query = "INSERT INTO tracare_entries (userid, weight, hours_slept, blood_pressure, energy_level, quality_of_sleep, fitness, nutrition, symptom, symptom_description, location_latitude, location_longitude) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -507,7 +508,7 @@ public class Database {
                      
         // Declare variable
         int count = 0;
-        int rvalue = -1;
+        int rvalue;
         
         // Declare query statement
         String query = "DELETE FROM tracare_entries WHERE id = ?";
@@ -705,7 +706,7 @@ public class Database {
                 
         // Declare variable
         int count = 0;
-        int rvalue = -1;
+        int rvalue;
                 
         try {
 

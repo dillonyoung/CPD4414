@@ -14,7 +14,6 @@ $(document).ready(function () {
         $('#error_last_name').css('display', 'none');
         $('#error_gender').css('display', 'none');
         $('#error_weight').css('display', 'none');
-        $('#error_height').css('display', 'none');
         $('#error_email').css('display', 'none');
         $('#error_password1').css('display', 'none');
         $('#error_password2').css('display', 'none');
@@ -44,15 +43,6 @@ $(document).ready(function () {
         } else if (isNaN($('#weight').val())) {
             $('#error_weight').text("* Weight must be a numeric value");
             $('#error_weight').css('display', 'inline-block');
-        }
-        
-        // Check to see if the height is set and is numeric
-        if ($('#height').val().length == 0) {
-            $('#error_height').text("* Height is required");
-            $('#error_height').css('display', 'inline-block');
-        } else if (isNaN($('#height').val())) {
-            $('#error_height').text("* Height must be a numeric value");
-            $('#error_height').css('display', 'inline-block');
         }
         
         // Check to see if the email address is set and not valid
@@ -98,13 +88,14 @@ $(document).ready(function () {
             registerData.last_name = $('#last_name').val();
             registerData.gender = $('#gender').val();
             registerData.weight = $('#weight').val();
-            registerData.height = $('#height').val();
+            registerData.height = 1;
             registerData.email = $('#email').val();
             registerData.password = $('#password1').val();
 
             // Convert the object to JSON
             var query = JSON.stringify(registerData);
 
+            // Attempt to register the new user
             $.ajax({
                 type: "POST",
                 url: "register_process.jsp",
@@ -129,7 +120,7 @@ $(document).ready(function () {
                         
                     } else {
                         displayMessage("You have successfully registered, please wait while you are redirected to the login page", 1);
-                        window.setTimeout(function () { window.location.href = 'login.jsp'; }, 5000);
+                        window.setTimeout(function () { window.location.href = 'login.jsp'; }, 3000);
                     }
                 }
             });
@@ -138,6 +129,4 @@ $(document).ready(function () {
             displayMessage("There is an issue with one or more fields", 2);
         }
     });
-    
-        console.log($("#btn_register"));
 });

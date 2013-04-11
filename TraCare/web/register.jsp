@@ -36,8 +36,7 @@
                                 <option value="1">Male</option>
                                 <option value="2">Female</option>
                             </select></p>
-                        <p>Weight: <span class="error" id="error_weight"></span><input type="text" name="weight" id="weight" /></p>
-                        <p>Height: <span class="error" id="error_height"></span><input type="text" name="height" id="height" /></p>
+                        <p>Weight: (Weight in Pounds)<span class="error" id="error_weight"></span><input type="text" name="weight" id="weight" /></p>
                         <p>Email Address: <span class="error" id="error_email"></span><input type="text" name="email" id="email" /></p>
                         <p>Password: <span class="error" id="error_password1"></span><input type="password" name="password1" id="password1" /></p>
                         <p>Confirm Password: <span class="error" id="error_password2"></span><input type="password" name="password2" id="password2" /></p>

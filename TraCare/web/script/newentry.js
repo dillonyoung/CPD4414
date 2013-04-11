@@ -5,9 +5,12 @@
 */
 
 $(document).ready(function () {
+    
+    // Check to see if the map container is on the page
     if ($('#map-canvas').length > 0) {
         
         // Based on code from http://www.w3schools.com/html/html5_geolocation.asp
+        // Check to see if the browser supports geo location
         if (navigator.geolocation)
         {
             navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -128,7 +131,7 @@ $(document).ready(function () {
                         
                     } else {
                         displayMessage("The entry has been successfully saved, please wait while you are redirected", 1);
-                        window.setTimeout(function () { window.location.href = 'entrylist.jsp'; }, 5000);
+                        window.setTimeout(function () { window.location.href = 'entrylist.jsp'; }, 3000);
                     }
                 }
             });
@@ -139,22 +142,40 @@ $(document).ready(function () {
     });
 });
 
+
+/**
+ * Shows the location of the user on a static Google map
+ */
 function showPosition(position) {
 
+    // Declare variables
     var latlon=position.coords.latitude + "," + position.coords.longitude;
     var img_url="http://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=16&size=600x200&" +
         "markers=color=blue%7Clabel:Position%7C" + latlon + "&sensor=true";
+    
+    // Set the image URL
     $('#map-canvas').attr('src', img_url);
+    
+    // Update the latitude and longitude values
     $('#latitude').val(position.coords.latitude);
     $('#longitude').val(position.coords.longitude);
 }
 
+
+/**
+ * Shows a default location on a static Google map
+ */
 function showError(error) {
     
+    // Declare variables
     var latlon=0 + "," + 0;
     var img_url="http://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=16&size=600x200&" +
         "markers=color=blue%7Clabel:Position%7C" + latlon + "&sensor=true";
+    
+    // Set the image URL
     $('#map-canvas').attr('src', img_url);
+    
+    // Update the latitude and longitude values
     $('#latitude').val(0.1);
     $('#longitude').val(0.1);
 }

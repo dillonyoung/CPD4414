@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : 9-Mar-2013, 5:04:33 PM
-    Author     : Dillon
+    Author     : Dillon Young (C0005790)
 --%>
 
 <%@page import="TraCarePackage.Database"%>
@@ -20,7 +20,10 @@
     </head>
     <body>
         <%
+            // Create an instance of the database class
             Database database = new Database();
+			
+            // Create the database tables
             int rvalue = database.createTables();
         %>
         <div data-role="page" id="main">
@@ -28,8 +31,8 @@
                 <h1>TraCare</h1>
             </div>
             <div data-role="content">
-                <a href="register.jsp" data-role="button" data-theme="c" data-transition="flip" rel="external" id="btn_register2">Register</a>
-                <a href="login.jsp" data-role="button" data-theme="c" data-transition="flip" rel="external" id="btn_login">Login</a>
+                <a href="register.jsp" data-role="button" data-theme="c" data-transition="flip" rel="external" id="btn_register2" class="main-link">Register</a>
+                <a href="login.jsp" data-role="button" data-theme="c" data-transition="flip" rel="external" id="btn_login" class="main-link">Login</a>
                 
             </div>
             <div data-role="footer" data-position="fixed" data-tap-toggle="false">
