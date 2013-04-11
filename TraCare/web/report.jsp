@@ -51,12 +51,28 @@
                     // Create a new instance of the report class
                     Report report = new Report();
                     
-                    // Create a new report object instance
-                    ReportObject obj = report.runReport(startDate, endDate, Integer.parseInt(session.getAttribute("userid").toString()));
+                    // Create a new instance of the report object class
+                    ReportObject obj = new ReportObject();
+                    
+                    // Declare variables
+                    String lowestDate = "";
+                    String highestDate = "";
+                    
+                    // Check to see if the session is not valid
+                    if (session.getAttribute("userid") == null) {
 
-                    // Build the formatted lowest and highest weight dates
-                    String lowestDate = new SimpleDateFormat("MMMMM d, yyyy").format(obj.getLowestDate());
-                    String highestDate = new SimpleDateFormat("MMMMM d, yyyy").format(obj.getHighestDate());
+                        // Redirect the user to the main page
+                        response.setStatus(response.SC_MOVED_TEMPORARILY);
+                        response.setHeader("Location", "index.jsp");
+                    } else {
+                        
+                        // Run the report
+                        obj = report.runReport(startDate, endDate, Integer.parseInt(session.getAttribute("userid").toString()));
+
+                        // Build the formatted lowest and highest weight dates
+                        lowestDate = new SimpleDateFormat("MMMMM d, yyyy").format(obj.getLowestDate());
+                        highestDate = new SimpleDateFormat("MMMMM d, yyyy").format(obj.getHighestDate());
+                    }
                 %>
                 <p class="heading">Start Date:</p>
                 <p><% out.write(displayStart); %></p>

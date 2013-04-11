@@ -33,21 +33,30 @@
             <div data-role="content">
                 <ul data-role="listview">
                 <%
-                    // Create a entry object instance
-                    Entry entry = new Entry();
+                    // Check to see if the session is not valid
+                    if (session.getAttribute("userid") == null) {
 
-                    // Load the entries for the current user from the database
-                    ArrayList<EntryObject> entries = entry.loadEntries(Integer.parseInt(session.getAttribute("userid").toString()));
+                        // Redirect the user to the main page
+                        response.setStatus(response.SC_MOVED_TEMPORARILY);
+                        response.setHeader("Location", "index.jsp");
+                    } else {
+                        
+                        // Create a entry object instance
+                        Entry entry = new Entry();
 
-                    // Loop through the entries and add an entry to the display list
-                    for (int i = 0; i < entries.size(); i++) {
-                        String entrydate = new SimpleDateFormat("MMMMM d, yyyy HH:mm:ss aa").format(entries.get(i).getDatetime());
-                        out.write("<li><a href='viewentry.jsp?id=" + entries.get(i).getId() + "' rel='external'>" + entrydate + "</a></li>");
-                    }
-                    
-                    // Check to see if the entries list is blank and display a message to the user
-                    if (entries.size() == 0) {
-                        out.write("<li>No entries are currently available</li>");
+                        // Load the entries for the current user from the database
+                        ArrayList<EntryObject> entries = entry.loadEntries(Integer.parseInt(session.getAttribute("userid").toString()));
+
+                        // Loop through the entries and add an entry to the display list
+                        for (int i = 0; i < entries.size(); i++) {
+                            String entrydate = new SimpleDateFormat("MMMMM d, yyyy HH:mm:ss aa").format(entries.get(i).getDatetime());
+                            out.write("<li><a href='viewentry.jsp?id=" + entries.get(i).getId() + "' rel='external'>" + entrydate + "</a></li>");
+                        }
+
+                        // Check to see if the entries list is blank and display a message to the user
+                        if (entries.size() == 0) {
+                            out.write("<li>No entries are currently available</li>");
+                        }
                     }
                 %>
                 </ul>

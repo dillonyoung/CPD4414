@@ -27,8 +27,20 @@
             // Create a new preferences object instance
             Preferences pref = new Preferences();
             
-            // oad the preferences for the current user
-            PreferencesObject obj = pref.loadPreferences(Integer.parseInt(session.getAttribute("userid").toString()));
+            // Create a new preferences object instance
+            PreferencesObject obj = new PreferencesObject();
+            
+            // Check to see if the session is not valid
+            if (session.getAttribute("userid") == null) {
+                
+                // Redirect the user to the main page
+                response.setStatus(response.SC_MOVED_TEMPORARILY);
+                response.setHeader("Location", "index.jsp");
+            } else {
+
+                // Load the preferences for the current user
+                obj = pref.loadPreferences(Integer.parseInt(session.getAttribute("userid").toString()));
+            }
         %>
         <div id="status_message"></div>
         <div data-role="page" id="newentry">

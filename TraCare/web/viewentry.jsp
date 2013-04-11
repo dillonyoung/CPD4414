@@ -36,10 +36,22 @@
                 <%
                     // Create a new entry instance
                     Entry entry = new Entry();
+                    
+                    // Create a new entry object instance
+                    EntryObject obj = new EntryObject();
+                    
+                    // Check to see if the session is not valid
+                    if (session.getAttribute("userid") == null) {
 
-                    // Load the entry details
-                    EntryObject obj = entry.loadEntry(Integer.parseInt(session.getAttribute("userid").toString()), Integer.parseInt(request.getParameter("id")));
-
+                        // Redirect the user to the main page
+                        response.setStatus(response.SC_MOVED_TEMPORARILY);
+                        response.setHeader("Location", "index.jsp");
+                    } else {
+                        
+                        // Load the entry details
+                        obj = entry.loadEntry(Integer.parseInt(session.getAttribute("userid").toString()), Integer.parseInt(request.getParameter("id")));
+                    }
+                    
                     // Create the decimal formatter instance
                     DecimalFormat df = new DecimalFormat("###.00");
                 %>

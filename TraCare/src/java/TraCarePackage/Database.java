@@ -20,8 +20,8 @@ public class Database {
 
     // Declare database connection variables
     // URL: The URL to the Microsoft SQL Server
-    //private String url = "jdbc:sqlserver://youngski.homeserver.com\\SQLSERVEREXPRESS:1433;databaseName=CSE_DEPT_c0005790";
-    private String url = "jdbc:sqlserver://ipro.lambton.on.ca\\MSSQLSERVER:1433;databaseName=CSE_DEPT_c0005790";
+    private String url = "jdbc:sqlserver://youngski.homeserver.com\\SQLSERVEREXPRESS:1433;databaseName=CSE_DEPT_c0005790";
+    //private String url = "jdbc:sqlserver://ipro.lambton.on.ca\\MSSQLSERVER:1433;databaseName=CSE_DEPT_c0005790";
     
     // Username: The username for the account on the Microsoft SQL Server
     private String username = "c0005790";
