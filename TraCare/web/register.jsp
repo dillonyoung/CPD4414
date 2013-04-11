@@ -29,19 +29,19 @@
             <div data-role="content">
 		<div data-role="content" data-theme="c">
                     <form name="form_register" id="form_register">
-                        <p>First Name: <span class="error" id="error_first_name"></span><input type="text" name="first_name" id="first_name" /></p>
-                        <p>Last Name: <span class="error" id="error_last_name"></span><input type="text" name="last_name" id="last_name" /></p>
-                        <p>Gender: <span class="error" id="error_gender"></span><select name="gender" id="gender">
+                        <p class="bold">First Name: <span class="error" id="error_first_name"></span><input type="text" name="first_name" id="first_name" /></p>
+                        <p class="bold">Last Name: <span class="error" id="error_last_name"></span><input type="text" name="last_name" id="last_name" /></p>
+                        <p class="bold">Gender: <span class="error" id="error_gender"></span><select name="gender" id="gender">
                                 <option value="">Select Gender</option>
                                 <option value="1">Male</option>
                                 <option value="2">Female</option>
                             </select></p>
-                        <p>Weight: (Weight in Pounds)<span class="error" id="error_weight"></span><input type="text" name="weight" id="weight" /></p>
-                        <p>Email Address: <span class="error" id="error_email"></span><input type="text" name="email" id="email" /></p>
-                        <p>Password: <span class="error" id="error_password1"></span><input type="password" name="password1" id="password1" /></p>
-                        <p>Confirm Password: <span class="error" id="error_password2"></span><input type="password" name="password2" id="password2" /></p>
+                        <p class="bold">Weight: (Weight in Pounds) <span class="error" id="error_weight"></span><input type="text" name="weight" id="weight" /></p>
+                        <p class="bold">Email Address: <span class="error" id="error_email"></span><input type="text" name="email" id="email" /></p>
+                        <p class="bold">Password: <span class="error" id="error_password1"></span><input type="password" name="password1" id="password1" /></p>
+                        <p class="bold">Confirm Password: <span class="error" id="error_password2"></span><input type="password" name="password2" id="password2" /></p>
                         <a href="" data-role="button" data-theme="b" id="btn_register">Register</a>       
-                        <a href="index.jsp" data-role="button" data-theme="c" data-transition="flip" id="btn_cancel">Cancel</a> 
+                        <a href="index.jsp" rel="external" data-role="button" data-theme="c" id="btn_cancel">Cancel</a> 
                     </form>
                 </div>
             <div data-role="footer" data-position="fixed" data-tap-toggle="false">

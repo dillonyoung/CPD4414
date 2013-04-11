@@ -530,6 +530,39 @@ public class Database {
         return rvalue; 
     }
     
+    public float getDefaultWeight(int userid) {
+                          
+        // Declare variable
+        int count = 0;
+        int rvalue = -1;
+        float weight = 0;
+
+        EntryObject entry = new EntryObject();
+        
+        // Declare query statement
+        String query = "SELECT weight FROM tracare_accounts WHERE id = ?";
+                
+        try {
+
+            // Create the prepared statement and fill in the values
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, userid);
+
+            // Execute the statement
+            ResultSet rs = pstmt.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            while (rs.next()) {
+                weight = rs.getFloat(1);
+            }
+   
+        } catch (SQLException ex) {
+            rvalue = -3;
+        }
+
+        // Return the result
+        return weight; 
+    }
+    
     
     /**
      * Runs a report based on the selected start and end dates

@@ -4,6 +4,7 @@
     Author     : Dillon
 --%>
 
+<%@page import="TraCarePackage.Database"%>
 <%@page import="TraCarePackage.PreferencesObject"%>
 <%@page import="TraCarePackage.Preferences"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -30,6 +31,12 @@
             // Create a new preferences object instance
             PreferencesObject obj = new PreferencesObject();
             
+            // Create a new database instance
+            Database database = new Database();
+            
+            // Declare variables
+            float weight = 0;
+            
             // Check to see if the session is not valid
             if (session.getAttribute("userid") == null) {
                 
@@ -40,6 +47,9 @@
 
                 // Load the preferences for the current user
                 obj = pref.loadPreferences(Integer.parseInt(session.getAttribute("userid").toString()));
+                
+                // Load the users weight
+                weight = database.getDefaultWeight(Integer.parseInt(session.getAttribute("userid").toString()));
             }
         %>
         <div id="status_message"></div>
@@ -48,10 +58,10 @@
             <div data-role="content">
                 <h2>New Entry</h2>
                 <% if (obj.isTrackWeight()) { %>
-                <p class="heading">Weight: (Weight in Pounds) <span class="error" id="error_weight"></span><input type="number" min="0" max="300" name="weight" id="weight" /></p>
+                <p class="heading">Weight: (Weight in Pounds) <span class="error" id="error_weight"></span><input type="number" min="0" max="300" name="weight" id="weight" value="<% out.write(String.valueOf(weight)); %>" /></p>
                 <% } %>
                 <% if (obj.isTrackSleep()) { %>
-                <p class="heading">Sleep: (Number of Hours Slept) <span class="error" id="error_sleep"></span><input type="number" min="0" max="24" name="sleep" id="sleep" /></p>
+                <p class="heading">Sleep: (Number of Hours Slept) <span class="error" id="error_sleep"></span><input type="number" min="0" max="24" name="sleep" id="sleep" value="8.0" /></p>
                 <% } %>
                 <% if (obj.isTrackEnergyLevel()) { %>
                 <p class="heading">Energy Level: <span class="error" id="error_energy_level"></span>

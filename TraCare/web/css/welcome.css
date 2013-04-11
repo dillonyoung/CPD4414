@@ -1,5 +1,5 @@
 /* 
-    Document   : main
+    Document   : welcome
     Created on : 10-Mar-2013, 2:37:14 PM
     Author     : Dillon Young
     Description: The main style sheet
@@ -118,6 +118,23 @@ td {
     clear: right;
 }
 
-.bold {
-    font-weight: bold;
+.logo {
+    float: left;
+}
+
+.main-background {
+    background-color: #2C7BFF;
+    overflow: hidden;
+    background-image: -ms-linear-gradient(top, #FFFFFF 0%, #2C7BFF 100%);
+    background-image: -moz-linear-gradient(top, #FFFFFF 0%, #2C7BFF 100%);
+    background-image: -o-linear-gradient(top, #FFFFFF 0%, #2C7BFF 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #2C7BFF));
+    background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #2C7BFF 100%);
+    background-image: linear-gradient(to bottom, #FFFFFF 0%, #2C7BFF 100%);
+}
+
+html, body, .ui-page, .ui-content, #fillme {
+    min-height: 100%;
+    height: 100%;
+    overflow: hidden;
 }

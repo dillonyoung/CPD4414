@@ -29,10 +29,10 @@
             <div data-role="content">
 		<div data-role="content" data-theme="c">
                     <form name="form_login" id="form_login">
-                        <p>Email Address: <span class="error" id="error_email"></span><input type="text" name="email" id="email" /></p>
-                        <p>Password: <span class="error" id="error_password"></span><input type="password" name="password" id="password" /></p>
+                        <p class="bold">Email Address: <span class="error" id="error_email"></span><input type="text" name="email" id="email" /></p>
+                        <p class="bold">Password: <span class="error" id="error_password"></span><input type="password" name="password" id="password" /></p>
                         <a href="" data-role="button" data-theme="b" id="btn_login">Login</a>       
-                        <a href="index.jsp" data-role="button" data-theme="c" data-transition="flip" id="btn_cancel">Cancel</a> 
+                        <a href="index.jsp" data-role="button" data-theme="c" rel="external" id="btn_cancel">Cancel</a> 
                     </form>
                 </div>
             <div data-role="footer" data-position="fixed" data-tap-toggle="false">
