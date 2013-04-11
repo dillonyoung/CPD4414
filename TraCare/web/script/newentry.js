@@ -6,9 +6,13 @@
 
 $(document).ready(function () {
     if ($('#map-canvas').length > 0) {
+        
+        // Based on code from http://www.w3schools.com/html/html5_geolocation.asp
         if (navigator.geolocation)
         {
-            navigator.geolocation.getCurrentPosition(showPosition);
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            showError();
         }
     }
 
@@ -143,4 +147,14 @@ function showPosition(position) {
     $('#map-canvas').attr('src', img_url);
     $('#latitude').val(position.coords.latitude);
     $('#longitude').val(position.coords.longitude);
+}
+
+function showError(error) {
+    
+    var latlon=0 + "," + 0;
+    var img_url="http://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=16&size=600x200&" +
+        "markers=color=blue%7Clabel:Position%7C" + latlon + "&sensor=true";
+    $('#map-canvas').attr('src', img_url);
+    $('#latitude').val(0.1);
+    $('#longitude').val(0.1);
 }
