@@ -128,7 +128,8 @@ $(document).ready(function () {
                         displayMessage("An error occurred while registering", 2);
                         
                     } else {
-                        displayMessage("Your have successfully registered", 1);
+                        displayMessage("You have successfully registered, please wait while you are redirected to the login page", 1);
+                        window.setTimeout(function () { window.location.href = 'login.jsp'; }, 5000);
                     }
                 }
             });

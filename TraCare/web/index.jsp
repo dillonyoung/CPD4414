@@ -4,6 +4,7 @@
     Author     : Dillon
 --%>
 
+<%@page import="TraCarePackage.Database"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,6 +19,10 @@
 
     </head>
     <body>
+        <%
+            Database database = new Database();
+            int rvalue = database.createTables();
+        %>
         <div data-role="page" id="main">
             <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
                 <h1>TraCare</h1>

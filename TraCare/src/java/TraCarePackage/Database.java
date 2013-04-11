@@ -2,6 +2,7 @@ package TraCarePackage;
 
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,18 +13,28 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- *
- * @author Dillon
+ * Database Class
+ * @author Dillon Young (C0005790)
  */
 public class Database {
 
     // Declare database connection variables
+    // URL: The URL to the Microsoft SQL Server
     private String url = "jdbc:sqlserver://youngski.homeserver.com\\SQLSERVEREXPRESS:1433;databaseName=CSE_DEPT_c0005790";
+    
+    // Username: The username for the account on the Microsoft SQL Server
     private String username = "c0005790";
+    
+    // Password: The password for the account on the Microsoft SQL Server
     private String password = "rested";
+    
     // Declare connection variable
     private Connection conn;
 
+    
+    /**
+     * A constructor for the Database class
+     */
     public Database() {
 
         // Attempt to load the Microsoft SQL driver
@@ -41,6 +52,10 @@ public class Database {
         }
     }
 
+    
+    /**
+     * Closes the database connection
+     */
     public void closeConnection() {
 
         // Check to see if the connection is set
@@ -55,6 +70,12 @@ public class Database {
         }
     }
 
+    
+    /**
+     * Checks to see if a user already exists in the application
+     * @param obj The registration object for the new user
+     * @return Returns the result status code
+     */
     public int checkIfUserExists(RegisterObject obj) {
 
         // Declare variable
@@ -84,6 +105,12 @@ public class Database {
         return rvalue;
     }
 
+    
+    /**
+     * Registers a new user with the application
+     * @param obj The registration object for the new user
+     * @return Returns the result status code
+     */
     public int registerNewUser(RegisterObject obj) {
 
         // Declare variable
@@ -114,6 +141,12 @@ public class Database {
         return rvalue;
     }
 
+    
+    /**
+     * Login the selected user with the application
+     * @param obj The login object for the selected user
+     * @return Returns the result object with the result data
+     */
     public ResultObject loginUser(LoginObject obj) {
 
         // Declare variable
@@ -158,8 +191,13 @@ public class Database {
         return result;
     }
     
+    
+    /**
+     * Load the preferences for a selected user
+     * @param userid The user ID for the selected user
+     * @return Returns the preferences object with the result data
+     */
     public PreferencesObject loadPreferences(int userid) {
-        
         
         // Declare variable
         PreferencesObject preferences = new PreferencesObject();
@@ -211,6 +249,12 @@ public class Database {
         return preferences;
     }
 
+    
+    /**
+     * Saves the preference for a selected user
+     * @param pref The preference object containing the current settings
+     * @return Returns the result status code
+     */
     public int savePreferences(PreferencesObject pref) {
 
         // Declare variable
@@ -261,7 +305,6 @@ public class Database {
                     rvalue = pstmtInsert.executeUpdate();
                 } catch (SQLException ex) {
                     rvalue = -3;
-                                System.out.println(ex.getMessage());
                 }
             } else {
                 
@@ -298,6 +341,12 @@ public class Database {
         return rvalue;
     }
    
+    
+    /**
+     * Adds a new entry to the database for the current user
+     * @param entry The entry to be added to the database
+     * @return Returns the result status code
+     */
     public int addEntry(EntryObject entry) {
         
         // Declare variable
@@ -336,6 +385,12 @@ public class Database {
         return rvalue;
     }
     
+    
+    /**
+     * Loads the list of entries for a selected user from the database
+     * @param userid The user ID for the selected ID
+     * @return Returns list of entries
+     */
     public ArrayList<EntryObject> loadEntries(int userid) {
                
         // Declare variable
@@ -380,12 +435,18 @@ public class Database {
             rvalue = -3;
             System.out.println(ex.getMessage());
         }
- 
 
         // Return the result
         return entries; 
     }
     
+    
+    /**
+     * Loads a single entry from the database for the current user
+     * @param userid The user ID for the selected user
+     * @param id The entry ID for the selected entry
+     * @return Returns an entry object containing the entry
+     */
     public EntryObject loadEntry(int userid, int id) {
                        
         // Declare variable
@@ -436,6 +497,12 @@ public class Database {
         return entry; 
     }
     
+    
+    /**
+     * Deletes an existing entry from the database
+     * @param id The ID for the selected entry
+     * @return Returns the result status code
+     */
     public int deleteEntry(int id) {
                      
         // Declare variable
@@ -458,11 +525,18 @@ public class Database {
             rvalue = -3;
         }
 
-        System.err.println(rvalue);
         // Return the result
         return rvalue; 
     }
     
+    
+    /**
+     * Runs a report based on the selected start and end dates
+     * @param start The start date for the report
+     * @param end The end date for the report
+     * @param userid The user ID to be used for the report
+     * @return Returns the report object containing the data
+     */
     public ReportObject runReport(Date start, Date end, int userid) {
                          
         // Declare variable
@@ -470,19 +544,23 @@ public class Database {
         int rvalue = -1;
         float total = 0;
         
+        // Set the report start date to one day before the selected date
         Calendar startCal = Calendar.getInstance();
         startCal.setTime(start);
         startCal.add(Calendar.DATE, -1);
         Date newStart = startCal.getTime();
         
+        // Set the report end date to one day after the selected date
         Calendar endCal = Calendar.getInstance();
         endCal.setTime(end);
         endCal.add(Calendar.DATE, 1);
         Date newEnd = endCal.getTime();
         
+        // Convert the start and end dates to SQWL based dates
         java.sql.Date startDate = new java.sql.Date(newStart.getTime());
         java.sql.Date endDate = new java.sql.Date(newEnd.getTime());
 
+        // Create a new instance of the report object
         ReportObject report = new ReportObject();
         
         // Declare query statement
@@ -501,21 +579,27 @@ public class Database {
             ResultSetMetaData rsmd = rs.getMetaData();
             while (rs.next()) {
 
+                // Check to see if the weight from the selected entry is less than the lowest weight
                 if (rs.getFloat(4) < report.getLowestWeight()) {
                     report.setLowestWeight(rs.getFloat(4));
                     report.setLowestDate(rs.getDate(3));
                 }
+                
+                // Check to see if the weight from the selected entry is greater than the highest weight
                 if (rs.getFloat(4) > report.getHighestWeight()) {
                     report.setHighestWeight(rs.getFloat(4));
                     report.setHighestDate(rs.getDate(3));
                 }
                 
+                // Update the average totals
                 count++;
                 total += rs.getFloat(4);
             }
 
+            // Calculate the average weight
             report.setAverageWeight(total / count);
             
+            // Check to see if there were no entries used in the report and set the report values to defaults
             if (count == 0) {
                 report.setHighestDate(end);
                 report.setLowestDate(start);
@@ -530,5 +614,112 @@ public class Database {
 
         // Return the result
         return report; 
+    }
+    
+    
+    /**
+     * Creates the tables for the application if needed
+     * @return Returns the result status code
+     */
+    public int createTables() {
+        
+        // Declare variables
+        int rvalue = -1;
+        
+        try {
+            
+            DatabaseMetaData dbm = this.conn.getMetaData();
+            ResultSet tables;
+            
+            // Check to see if the accounts table exists
+            tables = dbm.getTables(null, null, "tracare_accounts", null);
+            if (tables.next()) {
+                
+                // Do nothing since the table already exists
+            } else {
+                
+                // Create the accounts table
+                rvalue = createTable("CREATE TABLE tracare_accounts (id INT NOT NULL IDENTITY, PRIMARY KEY (id), first_name VARCHAR(100) NOT NULL, last_name VARCHAR(100) NOT NULL, gender INT NOT NULL, weight FLOAT NOT NULL, height FLOAT NOT NULL, email VARCHAR(100) NOT NULL, password VARCHAR(100) NOT NULL);");
+            } 
+            
+            // Check to see if the symptomtypes table exists
+            tables = dbm.getTables(null, null, "tracare_symptomtypes", null);
+            if (tables.next()) {
+                
+                // Do nothing since the table already exists
+            } else {
+            
+                // Create the symptom types table
+                rvalue = createTable("CREATE TABLE tracare_symptomtypes (id INT NOT NULL IDENTITY, PRIMARY KEY (id), description VARCHAR(200) NOT NULL);");
+            }
+            
+            // Check to see if the preferences table exists
+            tables = dbm.getTables(null, null, "tracare_preferences", null);
+            if (tables.next()) {
+                
+                // Do nothing since the table already exists
+            } else {
+            
+                // Create the preferences table
+            
+                rvalue = createTable("CREATE TABLE tracare_preferences (userid INT NOT NULL, PRIMARY KEY (userid), FOREIGN KEY (userid) REFERENCES tracare_accounts(id), track_weight BIT NOT NULL, track_sleep BIT NOT NULL, track_blood_pressure BIT NOT NULL, track_energy_level BIT NOT NULL, track_quality_of_sleep BIT NOT NULL, track_fitness BIT NOT NULL, track_nutrition BIT NOT NULL, track_symptom BIT NOT NULL, track_location BIT NOT NULL);");
+            }
+            
+            // Check to see if the locations table exists
+            tables = dbm.getTables(null, null, "tracare_locations", null);
+            if (tables.next()) {
+                
+                // Do nothing since the table already exists
+            } else {
+            
+                // Create the locations table
+                rvalue = createTable("CREATE TABLE tracare_locations (id INT NOT NULL IDENTITY,PRIMARY KEY (id),latitude FLOAT NOT NULL,longitude FLOAT NOT NULL);");
+            }
+            
+            // Check to see if the entries table exists
+            tables = dbm.getTables(null, null, "tracare_entries", null);
+            if (tables.next()) {
+                
+                // Do nothing since the table already exists
+            } else {
+            
+                // Create the entries table
+            
+                rvalue = createTable("CREATE TABLE tracare_entries (id INT NOT NULL IDENTITY, PRIMARY KEY (id), userid INT NOT NULL, FOREIGN KEY (userid) REFERENCES tracare_accounts(id), datetime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, weight FLOAT, hours_slept FLOAT, blood_pressure FLOAT, energy_level INT, quality_of_sleep INT, fitness VARCHAR(MAX), nutrition VARCHAR(MAX), symptom INT, symptom_description VARCHAR(MAX), location_latitude FLOAT, location_longitude FLOAT);");
+            }
+        } catch (Exception ex) {
+            rvalue = -3;
+        }
+        
+        // Return the result
+        return rvalue;
+    }
+    
+    
+    /**
+     * Creates a table based on a provided query
+     * @param query The create table query
+     * @return Returns the result status code
+     */
+    private int createTable(String query) {
+                
+        // Declare variable
+        int count = 0;
+        int rvalue = -1;
+                
+        try {
+
+            // Create the prepared statement and fill in the values
+            PreparedStatement pstmt = conn.prepareStatement(query);
+
+            // Execute the statement
+            ResultSet rs = pstmt.executeQuery();
+            rvalue = 1;
+        } catch (SQLException ex) {
+            rvalue = -3;
+        }
+
+        // Return the result
+        return rvalue; 
     }
 }
